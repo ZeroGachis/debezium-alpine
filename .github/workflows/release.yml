@@ -18,6 +18,8 @@ jobs:
     with:
         dockerfile_context: base/
         dockerhub_repository_name: debezium-alpine-base
+    secrets: inherit
+    
   docker-build-push-release:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
@@ -26,5 +28,4 @@ jobs:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
       tag: ${{ needs.github-release.outputs.release_number }}
-
-      
+    secrets: inherit
