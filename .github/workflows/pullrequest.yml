@@ -5,11 +5,21 @@ on:
   pull_request:
 
 jobs:
-    build-image:
+    build-image-base:
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       with:
         image_name: debezium-alpine-base
         dockerfile_context: base/
+        vault_enabled: false
+        tailscale_enabled: false
+        regitry_url: ghcr.io
+
+    build-image-connect-base:
+      uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
+      needs: build-image-base
+      with:
+        image_name: debezium-alpine-connect-base
+        dockerfile_context: connect-base/
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
