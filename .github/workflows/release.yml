@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - devel
+      - main
 
 jobs:
   github-release:
