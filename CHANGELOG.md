@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.1.0](https://github.com/ZeroGachis/debezium-alpine/compare/v0.1.2...v3.1.0) (2025-03-06)
+
+
+### Miscellaneous Chores
+
+* build connect-base image ([fd1f00f](https://github.com/ZeroGachis/debezium-alpine/commit/fd1f00fa81fc1d4d5476a39dbdb9ecb6982bfbb2))
+* make hadolint happy ([8e505b1](https://github.com/ZeroGachis/debezium-alpine/commit/8e505b12c34ff7b39a48133991f48a80bdd8187d))
+* release 3.1.0.Alpha2 ([f56d4a1](https://github.com/ZeroGachis/debezium-alpine/commit/f56d4a1673b28648e248a09f2e436577d5dccf4f))
+
 ## [0.1.2](https://github.com/ZeroGachis/debezium-alpine/compare/v0.1.1...v0.1.2) (2025-03-06)
 
 
