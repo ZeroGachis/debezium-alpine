@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/ZeroGachis/debezium-alpine/compare/v0.1.1...v0.1.2) (2025-03-06)
+
+
+### Miscellaneous Chores
+
+* use teams that exists ([17fd70d](https://github.com/ZeroGachis/debezium-alpine/commit/17fd70d0f224f3039653858a25718d28b39209da))
+* use teams that exists ([ac44cd5](https://github.com/ZeroGachis/debezium-alpine/commit/ac44cd5e6d29e2299d15ced3dfba470663233baa))
+
 ## [0.1.1](https://github.com/ZeroGachis/debezium-alpine/compare/v0.1.0...v0.1.1) (2025-03-06)
 
 
