@@ -4,7 +4,7 @@ LABEL maintainer="Smartway"
 
 USER root
 
-RUN apk add --no-cache --update openjdk21-jre-headless gzip curl zip bash libaio
+RUN apk add --no-cache --update openjdk21-jre-headless=21.0.6_p7-r0 gzip=1.13-r0 curl=8.12.1-r0 zip=3.0-r13 bash=5.2.37-r0 libaio=0.3.113-r2
 
 ARG KAFKA_VERSION=3.9.0
 ARG SCALA_VERSION=2.13
