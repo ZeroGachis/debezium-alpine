@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.1.0...v3.1.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* add step on CI release ([a5f8c54](https://github.com/ZeroGachis/debezium-alpine/commit/a5f8c543cdab89fe13166fa057ff3be3d1d855c3))
+* add step on CI release ([2eeb74d](https://github.com/ZeroGachis/debezium-alpine/commit/2eeb74dff3480d60b749d2fda81afdb51ea5c5a0))
+
 ## [3.1.0](https://github.com/ZeroGachis/debezium-alpine/compare/v0.1.2...v3.1.0) (2025-03-06)
 
 
