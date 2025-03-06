@@ -1,10 +1,10 @@
-FROM alpine:3.21
+FROM library/alpine@sha256:1c4eef651f65e2f7daee7ee785882ac164b02b78fb74503052a26dc061c90474
 
 LABEL maintainer="Smartway"
 
 USER root
 
-RUN apk add openjdk21-jre gzip curl zip bash libaio && apk cache clean
+RUN apk add --no-cache --update openjdk21-jre-headless gzip curl zip bash libaio
 
 ARG KAFKA_VERSION=3.9.0
 ARG SCALA_VERSION=2.13
