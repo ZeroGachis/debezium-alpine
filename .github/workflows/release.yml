@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - devel
 
 jobs:
   github-release:
@@ -17,14 +17,14 @@ jobs:
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
         dockerfile_context: base/
-        dockerhub_repository_name: zerogachis/base
+        dockerhub_repository_name: debezium-alpine-base
   docker-build-push-release:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: base/
-      dockerhub_repository_name: zerogachis/base
+      dockerhub_repository_name: debezium-alpine-base
       tag: ${{ needs.github-release.outputs.release_number }}
 
       
