@@ -1,0 +1,15 @@
+name: Create and publish a work in progress image
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+    build-image:
+      uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
+      with:
+        image_name: debezium-alpine-base
+        dockerfile_context: base/
+        vault_enabled: false
+        tailscale_enabled: false
+        regitry_url: ghcr.io
