@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.2.1...v3.2.2) (2025-03-07)
+
+
+### Continuous Integration
+
+* make all steps depends on the previous ([9549989](https://github.com/ZeroGachis/debezium-alpine/commit/954998964da2cf5c48f87e5833d2e64b22b45d3e))
+* make all steps depends on the previous ([5b1dbf9](https://github.com/ZeroGachis/debezium-alpine/commit/5b1dbf9f8e07c7a0b4c23c9532d5297cd73c641e))
+
 ## [3.2.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.2.0...v3.2.1) (2025-03-07)
 
 
