@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.3.4](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.3...v3.3.4) (2025-03-07)
+
+
+### Continuous Integration
+
+* fix var name ([d3f9e21](https://github.com/ZeroGachis/debezium-alpine/commit/d3f9e215f568f727ecc3a1c24eda2ec52012c1ff))
+* set right debezium version number ([8d867b6](https://github.com/ZeroGachis/debezium-alpine/commit/8d867b6118bcb44ad3ec87ce2d88cee32f4ae8f9))
+* set right debezium version number ([d21eeb2](https://github.com/ZeroGachis/debezium-alpine/commit/d21eeb299e555777fbfb8d9ce11172a5ed04a90a))
+
 ## [3.3.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.2...v3.3.3) (2025-03-07)
 
 
