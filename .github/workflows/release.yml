@@ -31,7 +31,7 @@ jobs:
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      tag: $DEBEZIUM_RELEASE
+      tag: "$DEBEZIUM_RELEASE"
     secrets: inherit
 
   connect-base-build:
