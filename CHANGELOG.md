@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.3.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.2.2...v3.3.0) (2025-03-07)
+
+
+### Features
+
+* add direct donwload of snwoflake connector ([1f32f1e](https://github.com/ZeroGachis/debezium-alpine/commit/1f32f1e32b583556eb31135b5e8cf92fd1973b28))
+
+
+### Miscellaneous Chores
+
+* add snowflake files ([2d7b3ba](https://github.com/ZeroGachis/debezium-alpine/commit/2d7b3ba8756c57e4e4a1523249361541ec345a7a))
+
 ## [3.2.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.2.1...v3.2.2) (2025-03-07)
 
 
