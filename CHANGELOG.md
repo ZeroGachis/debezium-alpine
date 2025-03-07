@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.2.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.1.1...v3.2.0) (2025-03-07)
+
+
+### Features
+
+* add new image ([0e041dd](https://github.com/ZeroGachis/debezium-alpine/commit/0e041ddea520dfafe338705d93f93ddb6d30b415))
+* add new image ([86c6a52](https://github.com/ZeroGachis/debezium-alpine/commit/86c6a52a84c4344f9912a580deb3bf2007e2dfed))
+
+
+### Continuous Integration
+
+* add renovate maven compatible file ([74ab540](https://github.com/ZeroGachis/debezium-alpine/commit/74ab54079e6b1c075ac17cf38bb18000f69bde1e))
+* add renovate maven compatible file ([53a456e](https://github.com/ZeroGachis/debezium-alpine/commit/53a456e1ae6edfe72c6e32a1df04a1fa519a604c))
+* fix wrong parameter name ([64533ed](https://github.com/ZeroGachis/debezium-alpine/commit/64533ed8ca07e938908ea69c306f4bb7cd8cfe9e))
+* more explicit jobs name, new pre-commit ([c5f457c](https://github.com/ZeroGachis/debezium-alpine/commit/c5f457c46f1fee8e1e18321a797c479d4497a306))
+* more explicit jobs name, new pre-commit ([9d15301](https://github.com/ZeroGachis/debezium-alpine/commit/9d15301ce4ea420d3a167a0b5a3bd7fe7997de99))
+
 ## [3.1.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.1.0...v3.1.1) (2025-03-06)
 
 
