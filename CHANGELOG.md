@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.2...v3.3.3) (2025-03-07)
+
+
+### Continuous Integration
+
+* use simple version number ([241925d](https://github.com/ZeroGachis/debezium-alpine/commit/241925de655126683269bade9fecfa53a50f04e5))
+* use simple version number ([2cdd378](https://github.com/ZeroGachis/debezium-alpine/commit/2cdd378815707977ecf5e492d8900c126120336a))
+
 ## [3.3.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.1...v3.3.2) (2025-03-07)
 
 
