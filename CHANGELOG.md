@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.3.7](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.6...v3.3.7) (2025-03-07)
+
+
+### Bug Fixes
+
+* set verison number the hardway ([e276001](https://github.com/ZeroGachis/debezium-alpine/commit/e2760018f934d4474c943ac7ee7171d0b1692671))
+* set version number the hardway ([27fa615](https://github.com/ZeroGachis/debezium-alpine/commit/27fa615f74f78a2af1b9136b9f85df380ecf6f1f))
+
+
+### Continuous Integration
+
+* make jobs dependent ([c42640c](https://github.com/ZeroGachis/debezium-alpine/commit/c42640c59d0bc75a1034f5f924c5f53376b16c92))
+
 ## [3.3.6](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.5...v3.3.6) (2025-03-07)
 
 
