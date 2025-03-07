@@ -22,52 +22,23 @@ jobs:
     with:
         dockerfile_context: base/
         dockerhub_repository_name: debezium-alpine-base
-    secrets: inherit
-
-  base-release:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
-    with:
-      dockerfile_context: base/
-      dockerhub_repository_name: debezium-alpine-base
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+        tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
 
   connect-base-build:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
+    needs: base-build
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
         dockerfile_context: connect-base/
         dockerhub_repository_name: debezium-alpine-connect-base
-    secrets: inherit
-
-  connect-base-release:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
-    with:
-      dockerfile_context: connect-base/
-      dockerhub_repository_name: debezium-alpine-connect-base
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+        tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
 
   postgresql-slim-build:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
+    needs: connect-base-build
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
         dockerfile_context: postgresql-slim/
         dockerhub_repository_name: debezium-postgresql-slim
-    secrets: inherit
-
-  postgresql-slim-release:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
-    with:
-      dockerfile_context: postgresql-slim/
-      dockerhub_repository_name: debezium-postgresql-slim
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+        tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
