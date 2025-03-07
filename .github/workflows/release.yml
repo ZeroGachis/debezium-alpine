@@ -6,9 +6,6 @@ on:
     branches:
       - main
 
-env:
-  DEBEZIUM_RELEASE: 3.1.0-Alpha2
-
 jobs:
   github-release:
     uses: ZeroGachis/.github/.github/workflows/gh-release-please.yml@v4
@@ -31,11 +28,13 @@ jobs:
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      tag: 3.1.0-Alpha2
+      tag: |
+        3.1.0-Alpha2
+        latest
     secrets: inherit
 
   connect-base-build:
-    needs: github-release
+    needs: [github-release, base-build]
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
@@ -44,17 +43,19 @@ jobs:
     secrets: inherit
 
   connect-base-release:
-    needs: github-release
+    needs: [github-release, base-release]
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
-      tag: 3.1.0-Alpha2
+      tag: |
+        3.1.0-Alpha2
+        latest
     secrets: inherit
 
   final-build:
-    needs: github-release
+    needs: [github-release, connect-base-build]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim]
@@ -66,7 +67,7 @@ jobs:
     secrets: inherit
 
   final-release:
-    needs: github-release
+    needs: [github-release, connect-base-release]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim]
@@ -75,5 +76,5 @@ jobs:
     with:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
-      tag: $DEBEZIUM_RELEASE
+      tag: 3.1.0-Alpha2
     secrets: inherit
