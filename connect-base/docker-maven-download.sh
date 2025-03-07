@@ -55,7 +55,7 @@ maven_debezium_plugin() {
 
 maven_snowflake_plugin() {
     maven_dep $MAVEN_REPO_CENTRAL "com/snowflake" $1 $2 "snowflake-kafka-connector-$2.jar" $3
-    tar -xzf "$DOWNLOAD_FILE" -C "$KAFKA_CONNECT_PLUGINS_DIR" && rm "$DOWNLOAD_FILE"
+    mv "$DOWNLOAD_FILE" "$KAFKA_CONNECT_PLUGINS_DIR"
 }
 
 maven_debezium_optional() {
