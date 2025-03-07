@@ -19,7 +19,7 @@ jobs:
       needs: build-image-base
       with:
         image_name: debezium-alpine-connect-base
-        build_args: |
+        build-args: |
           ARG OTEL_ENABLED=no
           ARG APICURIO_ENABLED=no
           ARG JOLOKIA_ENABLED=no
@@ -33,7 +33,7 @@ jobs:
       needs: build-image-base
       with:
         image_name: debezium-alpine-connect-base-full
-        build_args: |
+        build-args: |
           ARG OTEL_ENABLED=yes
           ARG APICURIO_ENABLED=yes
           ARG JOLOKIA_ENABLED=yes
