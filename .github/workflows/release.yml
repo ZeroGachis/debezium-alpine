@@ -17,21 +17,11 @@ jobs:
 
   base-build:
     needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
         dockerfile_context: base/
         dockerhub_repository_name: debezium-alpine-base
-    secrets: inherit
-
-  base-release:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
-    with:
-      dockerfile_context: base/
-      dockerhub_repository_name: debezium-alpine-base
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+        tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
 
   connect-base-build:
