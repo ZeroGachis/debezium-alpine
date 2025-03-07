@@ -53,6 +53,11 @@ maven_debezium_plugin() {
     tar -xzf "$DOWNLOAD_FILE" -C "$KAFKA_CONNECT_PLUGINS_DIR" && rm "$DOWNLOAD_FILE"
 }
 
+maven_snowflake_plugin() {
+    maven_dep $MAVEN_REPO_CENTRAL "com/snowflake" $1 $2 "snowflake-kafka-connector-$2.jar" $3
+    tar -xzf "$DOWNLOAD_FILE" -C "$KAFKA_CONNECT_PLUGINS_DIR" && rm "$DOWNLOAD_FILE"
+}
+
 maven_debezium_optional() {
     maven_dep $MAVEN_REPO_CENTRAL "io/debezium" "debezium-$1" $2 "debezium-$1-$2.tar.gz" $3
     tar -xzf "$DOWNLOAD_FILE" -C "$EXTERNAL_LIBS_DIR" && rm "$DOWNLOAD_FILE"
@@ -107,7 +112,7 @@ maven_otel_libs() {
         return
     fi
     if [[ ! -d "$EXTERNAL_LIBS_DIR/otel" ]] ; then
-	mkdir "$EXTERNAL_LIBS_DIR/otel"
+        mkdir "$EXTERNAL_LIBS_DIR/otel"
     fi
     maven_dep $MAVEN_REPO_CENTRAL $1 $2 $3 "$2-$3.jar" $4
     mv "$DOWNLOAD_FILE" $EXTERNAL_LIBS_DIR/otel
@@ -140,5 +145,8 @@ case $1 in
             ;;
     "otel" ) shift
             maven_otel_libs ${@}
+            ;;
+    "snowflake" ) shift
+            maven_snowflake_plugin ${@}
             ;;
 esac
