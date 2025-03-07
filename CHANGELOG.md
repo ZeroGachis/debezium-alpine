@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.3.8](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.7...v3.3.8) (2025-03-07)
+
+
+### Bug Fixes
+
+* jar files does not need uncompress ([70f601d](https://github.com/ZeroGachis/debezium-alpine/commit/70f601d954e986f872c9ed0de9b1f57b27a53989))
+* jar files does not need uncompress ([6bf89a6](https://github.com/ZeroGachis/debezium-alpine/commit/6bf89a6632cc002cc05320a417cc8e2cd18e1245))
+
+
+### Continuous Integration
+
+* add missing latest tag ([43c72de](https://github.com/ZeroGachis/debezium-alpine/commit/43c72de424e7a53bebd31c81c86d551bf2b8a830))
+* add missing latest tag ([5e4eb7f](https://github.com/ZeroGachis/debezium-alpine/commit/5e4eb7f1fc100043e4fc3d8737c84f504f27995e))
+
 ## [3.3.7](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.6...v3.3.7) (2025-03-07)
 
 
