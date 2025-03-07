@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.3.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.1...v3.3.2) (2025-03-07)
+
+
+### Continuous Integration
+
+* add snowflake ([fe41484](https://github.com/ZeroGachis/debezium-alpine/commit/fe41484d0a54a09288bc887e110d67647ee4ff51))
+* chnage the version number ([5b6f78d](https://github.com/ZeroGachis/debezium-alpine/commit/5b6f78dea6de43c9f26611411eb8cf72a60b5cd8))
+* test no release ([69261fe](https://github.com/ZeroGachis/debezium-alpine/commit/69261fe22bdbba2ae8f76772fe6dd05c989fa465))
+* use matrix ([b82fe4c](https://github.com/ZeroGachis/debezium-alpine/commit/b82fe4ca1a0d5412a11189745bde7d99cb68c164))
+* use matrix in release also ([92f0cd9](https://github.com/ZeroGachis/debezium-alpine/commit/92f0cd953c2ebfed032d2fef8119f951af7de7ba))
+
 ## [3.3.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.0...v3.3.1) (2025-03-07)
 
 
