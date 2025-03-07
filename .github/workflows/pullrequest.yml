@@ -42,12 +42,15 @@ jobs:
         tailscale_enabled: false
         regitry_url: ghcr.io
 
-    build-image-postgresql-slim:
+    build-final-image:
+      strategy:
+        matrix:
+          plugin: [postgresql-slim, snowflake-slim]
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-connect-base
       with:
-        image_name: debezium-postgresql-slim
-        dockerfile_context: postgresql-slim/
+        image_name: debezium-${{ matrix.plugin }}
+        dockerfile_context: ${{ matrix.plugin }}/
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
