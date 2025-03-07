@@ -34,7 +34,7 @@ jobs:
     secrets: inherit
 
   connect-base-build:
-    needs: github-release
+    needs: [github-release, base-build]
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
@@ -43,7 +43,7 @@ jobs:
     secrets: inherit
 
   connect-base-release:
-    needs: github-release
+    needs: [github-release, base-release]
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
@@ -55,7 +55,7 @@ jobs:
     secrets: inherit
 
   final-build:
-    needs: github-release
+    needs: [github-release, connect-base-build]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim]
@@ -67,7 +67,7 @@ jobs:
     secrets: inherit
 
   final-release:
-    needs: github-release
+    needs: [github-release, connect-base-release]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim]
