@@ -6,13 +6,16 @@ on:
     branches:
       - main
 
+env:
+  DEBEZIUM_RELEASE: 3.1.0.Alpha2
+
 jobs:
   github-release:
     uses: ZeroGachis/.github/.github/workflows/gh-release-please.yml@v4
     with:
         major_and_minor_tags: false
 
-  docker-build-push-build-base:
+  base-build:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
@@ -21,17 +24,17 @@ jobs:
         dockerhub_repository_name: debezium-alpine-base
     secrets: inherit
 
-  docker-build-push-release-base:
+  base-release:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      tag: ${{ needs.github-release.outputs.release_number }}
+      tag: $DEBEZIUM_RELEASE
     secrets: inherit
 
-  docker-build-push-build-connect-base:
+  connect-base-build:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
@@ -40,12 +43,12 @@ jobs:
         dockerhub_repository_name: debezium-alpine-connect-base
     secrets: inherit
 
-  docker-build-push-release-connect-base:
+  connect-base-release:
     needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
-      tag: ${{ needs.github-release.outputs.release_number }}
+      tag: $DEBEZIUM_RELEASE
     secrets: inherit
