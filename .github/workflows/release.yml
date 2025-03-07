@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  DEBEZIUM_RELEASE: 3.1.0-Alpha2
+  DEBEZIUM_RELEASE: 3.1.0
 
 jobs:
   github-release:
@@ -61,7 +61,7 @@ jobs:
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
         dockerfile_context: ${{ matrix.plugin }}/
-        dockerhub_repository_name: ${{ matrix.plugin }}
+        dockerhub_repository_name: debezium-${{ matrix.plugin }}
     secrets: inherit
 
   final-release:
