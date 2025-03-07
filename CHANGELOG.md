@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.4.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.8...v3.4.0) (2025-03-07)
+
+
+### Features
+
+* Add MariaDB ([a1ce2ef](https://github.com/ZeroGachis/debezium-alpine/commit/a1ce2ef03a14d40b6350bafb7b0b04127cd930ad))
+* Add MariaDB ([a7cb90f](https://github.com/ZeroGachis/debezium-alpine/commit/a7cb90fc2c40628e7127976276e952b80d248d94))
+
+
+### Bug Fixes
+
+* wrong command ([9c16db5](https://github.com/ZeroGachis/debezium-alpine/commit/9c16db52f70f6ac580be030319e8d3e62c820a8f))
+
 ## [3.3.8](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.7...v3.3.8) (2025-03-07)
 
 
