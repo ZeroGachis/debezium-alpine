@@ -44,7 +44,7 @@ jobs:
 
     build-image-postgresql-slim:
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
-      needs: build-image-base
+      needs: build-image-connect-base
       with:
         image_name: debezium-postgresql-slim
         dockerfile_context: postgresql-slim/
