@@ -19,7 +19,35 @@ jobs:
       needs: build-image-base
       with:
         image_name: debezium-alpine-connect-base
+        build_args: |
+          ARG OTEL_ENABLED=no
+          ARG APICURIO_ENABLED=no
+          ARG JOLOKIA_ENABLED=no
         dockerfile_context: connect-base/
+        vault_enabled: false
+        tailscale_enabled: false
+        regitry_url: ghcr.io
+
+    build-image-connect-base-full:
+      uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
+      needs: build-image-base
+      with:
+        image_name: debezium-alpine-connect-base-full
+        build_args: |
+          ARG OTEL_ENABLED=yes
+          ARG APICURIO_ENABLED=yes
+          ARG JOLOKIA_ENABLED=yes
+        dockerfile_context: connect-base/
+        vault_enabled: false
+        tailscale_enabled: false
+        regitry_url: ghcr.io
+
+    build-image-postgresql-slim:
+      uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
+      needs: build-image-base
+      with:
+        image_name: debezium-postgresql-slim
+        dockerfile_context: postgresql-slim/
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
