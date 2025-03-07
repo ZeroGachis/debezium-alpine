@@ -31,7 +31,7 @@ jobs:
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      tag: $DEBEZIUM_RELEASE
+      tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
 
   connect-base-build:
@@ -50,7 +50,7 @@ jobs:
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
-      tag: $DEBEZIUM_RELEASE
+      tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
 
   postgresql-slim-build:
@@ -69,5 +69,5 @@ jobs:
     with:
       dockerfile_context: postgresql-slim/
       dockerhub_repository_name: debezium-postgresql-slim
-      tag: $DEBEZIUM_RELEASE
+      tag: ${{ vars.DEBEZIUM_RELEASE }}
     secrets: inherit
