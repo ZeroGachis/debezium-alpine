@@ -31,7 +31,7 @@ jobs:
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+      tag: $DEBEZIUM_RELEASE
     secrets: inherit
 
   connect-base-build:
@@ -50,7 +50,7 @@ jobs:
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+      tag: $DEBEZIUM_RELEASE
     secrets: inherit
 
   final-build:
@@ -75,5 +75,5 @@ jobs:
     with:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
-      tag: ${{ vars.DEBEZIUM_RELEASE }}
+      tag: $DEBEZIUM_RELEASE
     secrets: inherit
