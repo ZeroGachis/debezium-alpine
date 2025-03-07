@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.2.0...v3.2.1) (2025-03-07)
+
+
+### Continuous Integration
+
+* fix env var usage ([c8562dd](https://github.com/ZeroGachis/debezium-alpine/commit/c8562ddb5743c2e282d1a42ca2c77a4da6705664))
+* fix env var usage ([a4abc7a](https://github.com/ZeroGachis/debezium-alpine/commit/a4abc7af961dce74a0bae6a81055b29ec76cea3a))
+
 ## [3.2.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.1.1...v3.2.0) (2025-03-07)
 
 
