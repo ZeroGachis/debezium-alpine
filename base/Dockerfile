@@ -4,7 +4,7 @@ LABEL maintainer="Smartway"
 
 USER root
 
-RUN apk add --no-cache --update openjdk21-jre-headless=21.0.6_p7-r0 gzip=1.13-r0 curl=8.12.1-r0 zip=3.0-r13 bash=5.2.37-r0 libaio=0.3.113-r2
+RUN apk add --no-cache --update openjdk21-jre-headless=21.0.6_p7-r0 gzip=1.13-r0 curl=8.12.1-r0 zip=3.0-r13 bash=5.2.37-r0 libaio=0.3.113-r2 findutils=4.10.0-r0
 
 ARG KAFKA_VERSION=3.9.0
 ARG SCALA_VERSION=2.13
@@ -39,13 +39,8 @@ RUN chown -R kafka $KAFKA_HOME && \
 # 3.) Remove potentially exploitable classes (see CVE-2021-4104/DBZ-4447 CVE-2019-17571 CVE-2022-23302 CVE-2022-23305 CVE-2020-9493)
 # 4.) Allow random UID to use Kafka (doing this for the bulk of files here, so as to avoid overhead of doing it in a separate layer)
 
-RUN curl -fSL -o /tmp/kafka.tgz $(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | sed -rn 's/.*"preferred":.*"(.*)"/\1/p')$KAFKA_URL_PATH || curl -fSL -o /tmp/kafka.tgz https://archive.apache.org/dist/$KAFKA_URL_PATH &&\
-    echo "$SHA512HASH /tmp/kafka.tgz" | sha512sum -c - &&\
-    tar -xzf /tmp/kafka.tgz -C $KAFKA_HOME --strip-components 1 &&\
-    rm -f /tmp/kafka.tgz &&\
-    zip -d /kafka/libs/reload4j-1.2.25.jar org/apache/log4j/net/JMSAppender.class org/apache/log4j/net/SocketServer.class org/apache/log4j/net/JMSSink.class 'org/apache/log4j/jdbc/*' 'org/apache/log4j/chainsaw/*' &&\
-    chmod -R g+w,o+w $KAFKA_HOME
-
+COPY ./download-kafka.sh /download-kafka.sh
+RUN /download-kafka.sh
 
 COPY ./log4j.properties $KAFKA_HOME/config/log4j.properties
 RUN chmod g+w,o+w $KAFKA_HOME/config/log4j.properties
@@ -57,6 +52,7 @@ RUN mkdir $KAFKA_HOME/config.orig &&\
     chown -R kafka:kafka $KAFKA_HOME/config.orig
 
 # Remove unnecessary files
+SHELL ["/bin/bash", "-c"]
 RUN rm -f $KAFKA_HOME/libs/*-{sources,javadoc,scaladoc}.jar* &&\
     rm -r $KAFKA_HOME/site-docs
 
@@ -66,11 +62,13 @@ RUN rm -f $KAFKA_HOME/libs/*-{sources,javadoc,scaladoc}.jar* &&\
 # environments; the CLASSPATH is filled from "base_dir" environment variable that contains the relative
 # path so it it is modified to contain absolute path using "realpath" command.
 #
-RUN sed -i 's/base_dir=\$(dirname \$0)\/../base_dir=\$(realpath \$(dirname \$0)\/..)/' $KAFKA_HOME/bin/kafka-run-class.sh
+SHELL ["/bin/bash", "-c"]
+RUN sed -i "s/base_dir=\$(dirname \$0)\/../base_dir=\$(realpath \$(dirname \$0)\/..)/" $KAFKA_HOME/bin/kafka-run-class.sh
 
 #
 # Allow random UID to use Kafka
 #
+# hadolint ignore=DL3059
 RUN chmod -R g+w,o+w $KAFKA_HOME
 
 USER kafka
