@@ -1,4 +1,4 @@
-FROM smartwayai/debezium-alpine-base:main
+FROM smartwayai/debezium-alpine-base:3.1
 
 LABEL maintainer="Smartway"
 
