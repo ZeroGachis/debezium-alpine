@@ -76,6 +76,11 @@ USER kafka
 # Set the working directory to the Kafka home directory
 WORKDIR $KAFKA_HOME
 
+# Replace some libs to avoir having CVE
+#
+COPY ./download-secure-netty.sh /download-secure-netty.sh
+RUN /download-secure-netty.sh
+
 #
 # Expose the ports and set up volumes for the data and logs directories
 #
