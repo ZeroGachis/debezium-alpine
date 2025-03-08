@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.0...v3.4.1) (2025-03-08)
+
+
+### Bug Fixes
+
+* Upgrade netty-* to 4.1.119 to fix CVE ([16eb9ae](https://github.com/ZeroGachis/debezium-alpine/commit/16eb9ae01aba653149579dd90d02f9fdb46ce980))
+* Upgrade netty-* to 4.1.119 to fix CVE ([9781b8b](https://github.com/ZeroGachis/debezium-alpine/commit/9781b8bd7bf5e99fb8b485dec4e28170d43c4767))
+
 ## [3.4.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.3.8...v3.4.0) (2025-03-07)
 
 
