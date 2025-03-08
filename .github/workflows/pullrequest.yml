@@ -45,7 +45,7 @@ jobs:
     build-final-image:
       strategy:
         matrix:
-          plugin: [postgresql-slim, snowflake-slim, mariadb-slim]
+          plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-connect-base
       with:
