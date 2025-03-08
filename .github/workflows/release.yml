@@ -58,7 +58,7 @@ jobs:
     needs: [github-release, connect-base-build]
     strategy:
       matrix:
-        plugin: [postgresql-slim, snowflake-slim, mariadb-slim]
+        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
@@ -70,7 +70,7 @@ jobs:
     needs: [github-release, connect-base-release]
     strategy:
       matrix:
-        plugin: [postgresql-slim, snowflake-slim, mariadb-slim]
+        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
