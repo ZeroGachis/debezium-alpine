@@ -1,4 +1,9 @@
 fail_fast: true
+
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
+
 repos:
   - repo: https://github.com/hadolint/hadolint
     rev: v2.12.0
