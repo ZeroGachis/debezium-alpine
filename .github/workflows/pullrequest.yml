@@ -55,13 +55,3 @@ jobs:
         tailscale_enabled: false
         regitry_url: ghcr.io
         security_scan_output_format: sarif
-
-    upload-sarif-file:
-        uses: github/codeql-action/upload-sarif@v3
-        needs: build-final-image
-        with:
-          # Path to SARIF file relative to the root of the repository
-          sarif_file: ${{ needs.build-final-image.outputs.sarif }}
-          # Optional category for the results
-          # Used to differentiate multiple results for one commit
-          category: Anchore
