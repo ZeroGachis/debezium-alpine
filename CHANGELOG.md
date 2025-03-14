@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.4.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.1...v3.4.2) (2025-03-14)
+
+
+### Miscellaneous Chores
+
+* Create scorecard.yml ([8608698](https://github.com/ZeroGachis/debezium-alpine/commit/860869859a0ed3115b1822b3b97bcb88042d4803))
+* Create scorecard.yml ([96a84d6](https://github.com/ZeroGachis/debezium-alpine/commit/96a84d6cfcad815f907de83bf74d7787ef4a2b6f))
+* remove scorecard ([82a571b](https://github.com/ZeroGachis/debezium-alpine/commit/82a571b489a0274a2c9528fc7f5b826c93d9e60e))
+* remove scorecard ([c0dcc79](https://github.com/ZeroGachis/debezium-alpine/commit/c0dcc790ccd54e1f59ad859b3eb544f9b356431c))
+
+
+### Continuous Integration
+
+* define the upload in the inherited action ([86ac332](https://github.com/ZeroGachis/debezium-alpine/commit/86ac3322edf778034fe7053603b66bedb101a431))
+* upload security result ([ba10f04](https://github.com/ZeroGachis/debezium-alpine/commit/ba10f0462905d6e94a6d782b90caa4f0e4090eb9))
+* upload security result ([40884d0](https://github.com/ZeroGachis/debezium-alpine/commit/40884d0f8f5428631ee8e8d4712d2d11638a1864))
+
 ## [3.4.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.0...v3.4.1) (2025-03-08)
 
 
