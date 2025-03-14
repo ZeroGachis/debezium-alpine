@@ -15,7 +15,7 @@ jobs:
         regitry_url: ghcr.io
 
     build-image-connect-base:
-      uses: ZeroGachis/.github/.github/workflows/build-image.yml@param_file
+      uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-base
       with:
         image_name: debezium-alpine-connect-base
