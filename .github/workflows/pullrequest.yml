@@ -54,3 +54,4 @@ jobs:
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
+        security_scan_output_format: sarif
