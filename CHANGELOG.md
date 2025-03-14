@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.5.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.2...v3.5.0) (2025-03-14)
+
+
+### Features
+
+* add renovate on the repo ([cf04b3c](https://github.com/ZeroGachis/debezium-alpine/commit/cf04b3c427b0898eaa79391fe40bfdb23ea79187))
+
+
+### Miscellaneous Chores
+
+* add todo actions to be grep later ([fde4a58](https://github.com/ZeroGachis/debezium-alpine/commit/fde4a58f9f84c02f2ecbdd944c8bdfa11f611f7f))
+* upgrade alpine version ([955d9bc](https://github.com/ZeroGachis/debezium-alpine/commit/955d9bccafd692d7feaf67109fcd9cf16c12b54a))
+
+
+### Continuous Integration
+
+* set v4 of build action ([03a99c1](https://github.com/ZeroGachis/debezium-alpine/commit/03a99c10a9fd84284fb8648d575bd9c49d15bafa))
+* try new version of build action ([de3e011](https://github.com/ZeroGachis/debezium-alpine/commit/de3e01136246c859e8d86a57ed18c69a1540999f))
+
 ## [3.4.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.1...v3.4.2) (2025-03-14)
 
 
