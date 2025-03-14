@@ -1,4 +1,4 @@
-FROM library/alpine@sha256:1c4eef651f65e2f7daee7ee785882ac164b02b78fb74503052a26dc061c90474
+FROM library/alpine@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
 
 LABEL maintainer="Smartway"
 
@@ -6,7 +6,10 @@ USER root
 
 RUN apk add --no-cache --update openjdk21-jre-headless=21.0.6_p7-r0 gzip=1.13-r0 curl=8.12.1-r0 zip=3.0-r13 bash=5.2.37-r0 libaio=0.3.113-r2 findutils=4.10.0-r0
 
+# TODO: add renovate here
 ARG KAFKA_VERSION=3.9.0
+
+# TODO: add renovate here
 ARG SCALA_VERSION=2.13
 ARG SHA512HASH="5324C1F44D4C84EA469712C2CC3D2D15545C3716EDBB5353722DF9C661FCC78B031FCF07D1C4F0309C5FDB32686665DFB0CFFE55210CD3A1FE2A370538CB4E6D"
 
