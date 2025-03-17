@@ -3,27 +3,19 @@ name: "Release"
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
-  github-release:
-    uses: ZeroGachis/.github/.github/workflows/gh-release-please.yml@v4
-    with:
-        major_and_minor_tags: false
-
   base-build:
-    needs: github-release
     if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
-        dockerfile_context: base/
-        dockerhub_repository_name: debezium-alpine-base
+      dockerfile_context: base/
+      dockerhub_repository_name: debezium-alpine-base
     secrets: inherit
 
   base-release:
-    needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: base/
@@ -34,49 +26,45 @@ jobs:
     secrets: inherit
 
   connect-base-build:
-    needs: [github-release, base-build]
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
+    needs: [base-build]
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
-        dockerfile_context: connect-base/
-        dockerhub_repository_name: debezium-alpine-connect-base
+      dockerfile_context: connect-base/
+      dockerhub_repository_name: debezium-alpine-connect-base
     secrets: inherit
 
   connect-base-release:
-    needs: [github-release, base-release]
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
+    needs: [base-release]
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
       tag: |
-        3.1.0-Alpha2
+        ${{ github.ref_name}}
         latest
     secrets: inherit
 
   final-build:
-    needs: [github-release, connect-base-build]
+    needs: [connect-base-build]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
-        dockerfile_context: ${{ matrix.plugin }}/
-        dockerhub_repository_name: debezium-${{ matrix.plugin }}
+      dockerfile_context: ${{ matrix.plugin }}/
+      dockerhub_repository_name: debezium-${{ matrix.plugin }}
     secrets: inherit
 
   final-release:
-    needs: [github-release, connect-base-release]
+    needs: [connect-base-release]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
-    if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v4
     with:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
       tag: |
-        3.1.0-Alpha2
+        ${{ github.ref_name }}
         latest
     secrets: inherit
