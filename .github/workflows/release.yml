@@ -9,6 +9,9 @@ on:
 jobs:
   github-release:
     uses: ZeroGachis/.github/.github/workflows/gh-release-please.yml@v4
+    permissions:
+      contents: write
+      pull-requests: write
     with:
         major_and_minor_tags: false
 
