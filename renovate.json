@@ -1,41 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":semanticCommits",
-    "schedule:weekly"
-  ],
-  "vulnerabilityAlerts": {
-    "labels": [
-      "security"
-    ],
-    "schedule": "at any time",
-    "commitMessageSuffix": "fix(security):",
-    "automerge": true
-  },
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0,
-  "ignoreUnstable": true,
-  "minimumReleaseAge": "7 days",
+  "extends": ["github>ZeroGachis/github-magic//renovate/default"],
   "packageRules": [
     {
-      "matchCategories": [
-        "docker"
-      ],
+      "matchCategories": ["docker"],
       "pinDigests": true
     },
     {
-      "matchUpdateTypes": [
-        "patch",
-        "pinDigest",
-        "digest"
-      ],
+      "matchUpdateTypes": ["patch", "pinDigest", "digest"],
       "automerge": true
     },
     {
-      "matchDatasources": [
-        "docker"
-      ],
+      "matchDatasources": ["docker"],
       "major": {
         "enabled": false
       },
@@ -45,42 +21,6 @@
       "patch": {
         "enabled": true
       }
-    },
-    {
-      "matchDatasources": [
-        "github-releases"
-      ],
-      "major": {
-        "enabled": false
-      },
-      "minor": {
-        "enabled": true
-      },
-      "patch": {
-        "enabled": true
-      }
-    }
-  ],
-  "customDatasources": {
-    "hashicorp": {
-      "defaultRegistryUrlTemplate": "https://api.releases.hashicorp.com/v1/releases/{{packageName}}?license_class=oss",
-      "format": "json",
-      "transformTemplates": [
-        "{ \"releases\": $[license_class=\"oss\"].{\"version\": version,\"releaseTimestamp\": timestamp_created,\"changelogUrl\": url_changelog,\"sourceUrl\": url_source_repository},\"homepage\": $[license_class=\"oss\"][0].url_project_website}"
-      ]
-    }
-  },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Update _VERSION variables in Dockerfiles",
-      "fileMatch": [
-        "(^|/|\\.)Dockerfile$",
-        "(^|/)Dockerfile\\.[^/]*$"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
-      ]
     }
   ]
 }
