@@ -1,5 +1,27 @@
 # Changelog
 
+## [3.5.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.0...v3.5.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* error on ci ([57f3eff](https://github.com/ZeroGachis/debezium-alpine/commit/57f3eff3181b686591e1b356dc6f055e78d68afa))
+
+
+### Miscellaneous Chores
+
+* add missing perm on release ([e1fb5a0](https://github.com/ZeroGachis/debezium-alpine/commit/e1fb5a00e943e7b8ee207ee4b55175e6986dcf00))
+* add renovate config file ([26add89](https://github.com/ZeroGachis/debezium-alpine/commit/26add8947b361670fb20b4597b40eab4b87c8d34))
+* set up renovate on Alpine packages ([4c8befd](https://github.com/ZeroGachis/debezium-alpine/commit/4c8befddd9c84c2bede739317b0b72df89dfa60d))
+* set up renovate on Alpine packages ([29d42f4](https://github.com/ZeroGachis/debezium-alpine/commit/29d42f49b71ec9cefd5ecde20cc984d8dc407ddb))
+* upgrade curl ([4e4ef60](https://github.com/ZeroGachis/debezium-alpine/commit/4e4ef6019a9861c632d559301b2075b647697e53))
+
+
+### Continuous Integration
+
+* add trivy scanner ([fce4561](https://github.com/ZeroGachis/debezium-alpine/commit/fce4561871df037ab94e60407ba3c6de98719ff1))
+* add trivy scanner ([a3a0759](https://github.com/ZeroGachis/debezium-alpine/commit/a3a075978113f5bbc2062bcaca2657aa2c4af626))
+
 ## [3.5.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.4.2...v3.5.0) (2025-03-14)
 
 
