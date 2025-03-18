@@ -7,16 +7,34 @@ on:
 jobs:
     build-image-base:
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
+      permissions:
+        contents: read
+        security-events: write
+        actions: read
+        id-token: write
+        packages: write
+        pull-requests: write
+        checks: write
       with:
         image_name: debezium-alpine-base
         dockerfile_context: base/
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
+        security_scan_output_format: sarif
+        trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 
     build-image-connect-base:
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-base
+      permissions:
+        contents: read
+        security-events: write
+        actions: read
+        id-token: write
+        packages: write
+        pull-requests: write
+        checks: write
       with:
         image_name: debezium-alpine-connect-base
         build-args: |
@@ -27,10 +45,20 @@ jobs:
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
+        security_scan_output_format: sarif
+        trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 
     build-image-connect-base-full:
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-base
+      permissions:
+        contents: read
+        security-events: write
+        actions: read
+        id-token: write
+        packages: write
+        pull-requests: write
+        checks: write
       with:
         image_name: debezium-alpine-connect-base-full
         build-args: |
@@ -41,6 +69,8 @@ jobs:
         vault_enabled: false
         tailscale_enabled: false
         regitry_url: ghcr.io
+        security_scan_output_format: sarif
+        trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 
     build-final-image:
       strategy:
@@ -48,6 +78,14 @@ jobs:
           plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
       uses: ZeroGachis/.github/.github/workflows/build-image.yml@v4
       needs: build-image-connect-base
+      permissions:
+        contents: read
+        security-events: write
+        actions: read
+        id-token: write
+        packages: write
+        pull-requests: write
+        checks: write
       with:
         image_name: debezium-${{ matrix.plugin }}
         dockerfile_context: ${{ matrix.plugin }}/
@@ -55,3 +93,4 @@ jobs:
         tailscale_enabled: false
         regitry_url: ghcr.io
         security_scan_output_format: sarif
+        trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
