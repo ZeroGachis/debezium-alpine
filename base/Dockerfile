@@ -4,7 +4,29 @@ LABEL maintainer="Smartway"
 
 USER root
 
-RUN apk add --no-cache --update openjdk21-jre-headless=21.0.6_p7-r0 gzip=1.13-r0 curl=8.12.1-r1 zip=3.0-r13 bash=5.2.37-r0 libaio=0.3.113-r2 findutils=4.10.0-r0
+# renovate: datasource=repology depName=alpine_3_21/gzip versioning=loose
+ENV GZIP_VERSION=1.13-r0
+
+# renovate: datasource=repology depName=alpine_3_21/curl versioning=loose
+ENV CURL_VERSION=8.12.1-r1
+
+# renovate: datasource=repology depName=alpine_3_21/zip versioning=loose
+ENV ZIP_VERSION=3.0-r13
+
+# renovate: datasource=repology depName=alpine_3_21/openjdk21-jre-headless versioning=loose
+ENV OPENJDK_VERSION=21.0.6_p7-r0
+
+# renovate: datasource=repology depName=alpine_3_21/bash versioning=loose
+ENV BASH_VERSION=5.2.37-r0
+
+# renovate: datasource=repology depName=alpine_3_21/libaio versioning=loose
+ENV LIBAIO_VERSION=0.3.113-r2
+
+# renovate: datasource=repology depName=alpine_3_21/libaio versioning=loose
+ENV FINDUTILS_VERSION=4.10.0-r0
+
+
+RUN apk add --no-cache --update openjdk21-jre-headless=${OPENJDK_VERSION} gzip=${GZIP_VERSION} curl=${CURL_VERSION} zip=${ZIP_VERSION} bash=${BASH_VERSION} libaio=${LIBAIO_VERSION} findutils=${FINDUTILS_VERSION}
 
 # TODO: add renovate here
 ARG KAFKA_VERSION=3.9.0
