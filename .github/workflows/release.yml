@@ -30,8 +30,6 @@ jobs:
     with:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
 
   base-release:
@@ -52,8 +50,6 @@ jobs:
       tag: |
         3.1.0-Alpha2
         latest
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
 
   connect-base-build:
@@ -71,8 +67,6 @@ jobs:
     with:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
 
   connect-base-release:
@@ -93,8 +87,6 @@ jobs:
       tag: |
         3.1.0-Alpha2
         latest
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
 
   final-build:
@@ -115,8 +107,6 @@ jobs:
     with:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
 
   final-release:
@@ -140,6 +130,4 @@ jobs:
       tag: |
         3.1.0-Alpha2
         latest
-      security_scan_output_format: sarif
-      trivy_severity: 'CRITICAL,HIGH,MEDIUM,LOW'
     secrets: inherit
