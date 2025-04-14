@@ -1,4 +1,4 @@
-FROM smartwayai/debezium-alpine-base:3.1.0-Alpha2@sha256:273245cf2843ef973f17402c57196a8f8a4605a422aa504143e9052d55b4e41c
+FROM smartwayai/debezium-alpine-base:3.1.0-Alpha2@sha256:aa33d4752939c4eb649533e0dc6c341dd03299343c20d89cd704ab9f17751187
 
 LABEL maintainer="Smartway"
 
