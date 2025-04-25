@@ -3,6 +3,9 @@ name: Create and publish a work in progress image
 on:
   workflow_dispatch:
   pull_request:
+    paths-ignore:
+      - 'README.md'
+      - 'catalog-info.yaml'
 
 jobs:
     build-image-base:

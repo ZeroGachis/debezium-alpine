@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - 'catalog-info.yaml'
 
 jobs:
   github-release:
@@ -48,7 +51,7 @@ jobs:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
       tag: |
-        3.1.0-Alpha2
+        3.1.1-Final
         latest
     secrets: inherit
 
@@ -85,7 +88,7 @@ jobs:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
       tag: |
-        3.1.0-Alpha2
+        3.1.1-Final
         latest
     secrets: inherit
 
@@ -128,6 +131,6 @@ jobs:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
       tag: |
-        3.1.0-Alpha2
+        3.1.1-Final
         latest
     secrets: inherit
