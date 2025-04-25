@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.5.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.2...v3.5.3) (2025-04-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency alpine_3_21/openjdk21-jre-headless to v21.0.7_p6-r0 ([5cb6d13](https://github.com/ZeroGachis/debezium-alpine/commit/5cb6d1366d30ced1cd5c0a444967ffe7e42f6531))
+* **deps:** update dependency alpine_3_21/openjdk21-jre-headless to v21.0.7_p6-r0 ([33a204c](https://github.com/ZeroGachis/debezium-alpine/commit/33a204c07b46e26d2533f9c57e284ec29ea93c2d))
+* **deps:** update smartwayai/debezium-alpine-base:3.1.0-alpha2 docker digest to aa33d47 ([#71](https://github.com/ZeroGachis/debezium-alpine/issues/71)) ([4aaa9c6](https://github.com/ZeroGachis/debezium-alpine/commit/4aaa9c6cf3ecaa871fe7c6b2e0b1eb2ba168174f))
+* **deps:** update smartwayai/debezium-alpine-connect-base:3.1.0-alpha2 docker digest to 3ab0014 ([#72](https://github.com/ZeroGachis/debezium-alpine/issues/72)) ([fbd7b01](https://github.com/ZeroGachis/debezium-alpine/commit/fbd7b016e9fa711e47a21b55214fcd7194886165))
+
+## [3.5.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.1...v3.5.2) (2025-04-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** pin dependencies ([dddeb7a](https://github.com/ZeroGachis/debezium-alpine/commit/dddeb7aeeb22c34a7d1c44671760c4494d9aadb1))
+* **deps:** pin dependencies ([3f2c89f](https://github.com/ZeroGachis/debezium-alpine/commit/3f2c89f4ab8a3033fcb85defb698a70aed7e9fea))
+
 ## [3.5.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.0...v3.5.1) (2025-03-18)
 
 
