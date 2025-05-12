@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.4](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.3...v3.5.4) (2025-04-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** update smartwayai/debezium-alpine-base:3.1.0-alpha2 docker digest to f013a36 ([#76](https://github.com/ZeroGachis/debezium-alpine/issues/76)) ([8bba3ab](https://github.com/ZeroGachis/debezium-alpine/commit/8bba3ab5fb67078ec37210485d885158a595f1b1))
+* **deps:** update smartwayai/debezium-alpine-connect-base:3.1.0-alpha2 docker digest to 743cf1f ([#77](https://github.com/ZeroGachis/debezium-alpine/issues/77)) ([49c023c](https://github.com/ZeroGachis/debezium-alpine/commit/49c023c66c7aef52c37f131a0b593e70592b00ac))
+
 ## [3.5.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.2...v3.5.3) (2025-04-25)
 
 
