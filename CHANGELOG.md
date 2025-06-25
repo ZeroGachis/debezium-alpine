@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.6.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.4...v3.6.0) (2025-06-25)
+
+
+### Features
+
+* add security scan workflow ([0a8ac7c](https://github.com/ZeroGachis/debezium-alpine/commit/0a8ac7cd2a496ee9796334974abbd90c500aa97c))
+
+
+### Miscellaneous Chores
+
+* **deps:** update smartwayai/debezium-alpine-base:3.1.0-alpha2 docker digest to 3fc056b ([#80](https://github.com/ZeroGachis/debezium-alpine/issues/80)) ([431332f](https://github.com/ZeroGachis/debezium-alpine/commit/431332f4d73e12d4e2c8b142f1f3fea54dc21742))
+
 ## [3.5.4](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.3...v3.5.4) (2025-04-28)
 
 
