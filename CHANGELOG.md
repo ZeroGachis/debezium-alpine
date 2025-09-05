@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.0...v3.6.1) (2025-09-05)
+
+
+### Miscellaneous Chores
+
+* release 3.6.1 ([f7efae2](https://github.com/ZeroGachis/debezium-alpine/commit/f7efae297a0e8ca06f3fee858ee5e699c889a03e))
+
 ## [3.6.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.4...v3.6.0) (2025-09-05)
 
 
