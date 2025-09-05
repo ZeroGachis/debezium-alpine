@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.6.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.4...v3.6.0) (2025-09-05)
+
+
+### Features
+
+* add security scan workflow ([0a8ac7c](https://github.com/ZeroGachis/debezium-alpine/commit/0a8ac7cd2a496ee9796334974abbd90c500aa97c))
+
+
+### Miscellaneous Chores
+
+* **deps:** update alpine base image and package versions to 3.22 ([a90aecf](https://github.com/ZeroGachis/debezium-alpine/commit/a90aecfc9ff25e8300d3c5d80d4aa6defa0e3db8))
+* **deps:** update dependency alpine_3_21/openjdk21-jre-headless to v21.0.8_p9-r0 ([#85](https://github.com/ZeroGachis/debezium-alpine/issues/85)) ([eaca37f](https://github.com/ZeroGachis/debezium-alpine/commit/eaca37fa96b638d46be62c9b5d7380ca9e2e1f9b))
+* **deps:** update Docker images to version 3.2.2.Final ([749c77e](https://github.com/ZeroGachis/debezium-alpine/commit/749c77eb6607c8984ee6aa6c047cf8b6e3fa9e73))
+* **deps:** update Kafka version to 4.1.0 ([e1242f0](https://github.com/ZeroGachis/debezium-alpine/commit/e1242f0fbc6034ffa8e3ba414d69fd6791ec30d2))
+* **deps:** update MD5 checksums for JDBC, MariaDB, and PostgreSQL Dockerfiles ([bcd4013](https://github.com/ZeroGachis/debezium-alpine/commit/bcd4013f2285d9f2f0ce281ba2c77427e0e3de4f))
+* **deps:** update smartwayai/debezium-alpine-base:3.1.0-alpha2 docker digest to 3fc056b ([#80](https://github.com/ZeroGachis/debezium-alpine/issues/80)) ([431332f](https://github.com/ZeroGachis/debezium-alpine/commit/431332f4d73e12d4e2c8b142f1f3fea54dc21742))
+* **deps:** update Snowflake version to 3.3.0 and corresponding MD5 checksum ([0591877](https://github.com/ZeroGachis/debezium-alpine/commit/05918775f29456a56a48ccec66d6328d9aaa607a))
+* **log4j:** update logging pattern for stdout and file appender to structured JSON format ([b81b709](https://github.com/ZeroGachis/debezium-alpine/commit/b81b70927b1cba83020f100a540fd24517247907))
+
 ## [3.5.4](https://github.com/ZeroGachis/debezium-alpine/compare/v3.5.3...v3.5.4) (2025-04-28)
 
 
