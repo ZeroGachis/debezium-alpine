@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.1...v3.6.2) (2025-09-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** update MD5 checksums for JDBC, MariaDB, and PostgreSQL Dockerfiles ([3d471ce](https://github.com/ZeroGachis/debezium-alpine/commit/3d471cea04b9bb3e86b764b94813a7c64f1c7de2))
+
 ## [3.6.1](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.0...v3.6.1) (2025-09-05)
 
 
