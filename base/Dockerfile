@@ -8,7 +8,7 @@ USER root
 ENV GZIP_VERSION=1.14-r1
 
 # renovate: datasource=repology depName=alpine_3_22/curl versioning=loose
-ENV CURL_VERSION=8.14.1-r1
+ENV CURL_VERSION=8.14.1-r2
 
 # renovate: datasource=repology depName=alpine_3_22/zip versioning=loose
 ENV ZIP_VERSION=3.0-r13
