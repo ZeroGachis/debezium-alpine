@@ -14,7 +14,7 @@ ENV CURL_VERSION=8.14.1-r2
 ENV ZIP_VERSION=3.0-r13
 
 # renovate: datasource=repology depName=alpine_3_22/openjdk21-jre-headless versioning=loose
-ENV OPENJDK_VERSION=21.0.8_p9-r0
+ENV OPENJDK_VERSION=21.0.9_p10-r0
 
 # renovate: datasource=repology depName=alpine_3_22/bash versioning=loose
 ENV BASH_VERSION=5.2.37-r0
