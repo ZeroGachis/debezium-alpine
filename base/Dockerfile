@@ -5,19 +5,19 @@ LABEL maintainer="Smartway"
 USER root
 
 # renovate: datasource=repology depName=alpine_3_22/gzip versioning=loose
-ENV GZIP_VERSION=1.14-r1
+ENV GZIP_VERSION=1.14-r2
 
 # renovate: datasource=repology depName=alpine_3_22/curl versioning=loose
-ENV CURL_VERSION=8.14.1-r2
+ENV CURL_VERSION=8.17.0-r1
 
 # renovate: datasource=repology depName=alpine_3_22/zip versioning=loose
 ENV ZIP_VERSION=3.0-r13
 
 # renovate: datasource=repology depName=alpine_3_22/openjdk21-jre-headless versioning=loose
-ENV OPENJDK_VERSION=21.0.9_p10-r0
+ENV OPENJDK_VERSION=21.0.10_p7-r0
 
 # renovate: datasource=repology depName=alpine_3_22/bash versioning=loose
-ENV BASH_VERSION=5.2.37-r0
+ENV BASH_VERSION=5.3.3-r1
 
 # renovate: datasource=repology depName=alpine_3_22/libaio versioning=loose
 ENV LIBAIO_VERSION=0.3.113-r2
