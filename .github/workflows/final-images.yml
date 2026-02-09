@@ -1,0 +1,61 @@
+name: Build Final Images
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "postgresql-slim/**"
+      - "snowflake-slim/**"
+      - "mariadb-slim/**"
+      - "jdbc-slim/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "postgresql-slim/**"
+      - "snowflake-slim/**"
+      - "mariadb-slim/**"
+      - "jdbc-slim/**"
+
+jobs:
+  pr-build:
+    if: github.event_name == 'pull_request'
+    strategy:
+      matrix:
+        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
+    uses: ZeroGachis/.github/.github/workflows/build-image.yml@v5
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      id-token: write
+      packages: write
+      pull-requests: write
+      checks: write
+    with:
+      image_name: debezium-${{ matrix.plugin }}
+      dockerfile_context: ${{ matrix.plugin }}/
+      vault_enabled: false
+      tailscale_enabled: false
+      regitry_url: ghcr.io
+      security_scan_output_format: sarif
+      trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
+
+  build:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    strategy:
+      matrix:
+        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
+    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      id-token: write
+      packages: write
+      pull-requests: write
+      checks: write
+    with:
+      dockerfile_context: ${{ matrix.plugin }}/
+      dockerhub_repository_name: debezium-${{ matrix.plugin }}
+    secrets: inherit
