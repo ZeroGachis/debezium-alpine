@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.6.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.2...v3.6.3) (2026-02-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** update alpine:3.22 docker digest to 4b7ce07 ([#92](https://github.com/ZeroGachis/debezium-alpine/issues/92)) ([9717484](https://github.com/ZeroGachis/debezium-alpine/commit/971748454ec457cfad02b1ad6621bf52f85cdf81))
+* **deps:** update dependency alpine_3_22/curl to v8.14.1-r2 ([#90](https://github.com/ZeroGachis/debezium-alpine/issues/90)) ([5517926](https://github.com/ZeroGachis/debezium-alpine/commit/5517926fcb8099e78a47efa929e6866985c0fec9))
+* **deps:** update dependency alpine_3_22/openjdk21-jre-headless to v21.0.9_p10-r0 ([#93](https://github.com/ZeroGachis/debezium-alpine/issues/93)) ([ab0d917](https://github.com/ZeroGachis/debezium-alpine/commit/ab0d917be20a68bdd013dd502b0365fcd0e683cb))
+* **deps:** update zerogachis/.github action to v5 ([1e6139c](https://github.com/ZeroGachis/debezium-alpine/commit/1e6139cb0777088bd2b209dc87bfc65b9450b23a))
+* **deps:** update zerogachis/.github action to v5 ([1ce7a54](https://github.com/ZeroGachis/debezium-alpine/commit/1ce7a54c991356e96e530cbbca25153123d7c8c0))
+
 ## [3.6.2](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.1...v3.6.2) (2025-09-05)
 
 
