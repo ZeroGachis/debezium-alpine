@@ -13,27 +13,27 @@ jobs:
       contents: write
       pull-requests: write
     with:
-        major_and_minor_tags: false
+      major_and_minor_tags: false
 
-  base-build:
+  extract-version:
     needs: github-release
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-      id-token: write
-      packages: write
-      pull-requests: write
-      checks: write
-    with:
-      dockerfile_context: base/
-      dockerhub_repository_name: debezium-alpine-base
-    secrets: inherit
+    if: ${{ needs.github-release.outputs.release_created == 'true' }}
+    runs-on: ubuntu-latest
+    outputs:
+      debezium_version: ${{ steps.get-version.outputs.debezium_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract Debezium version from Dockerfile
+        id: get-version
+        run: |
+          VERSION=$(grep '^FROM' connect-base/Dockerfile | head -1 | sed 's/.*://')
+          echo "debezium_version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Detected Debezium version: ${VERSION}"
 
   base-release:
-    needs: github-release
+    needs: [github-release, extract-version]
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
     permissions:
@@ -48,29 +48,12 @@ jobs:
       dockerfile_context: base/
       dockerhub_repository_name: debezium-alpine-base
       tag: |
-        3.2.2.Final
+        ${{ needs.extract-version.outputs.debezium_version }}
         latest
-    secrets: inherit
-
-  connect-base-build:
-    needs: [github-release, base-build]
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-      id-token: write
-      packages: write
-      pull-requests: write
-      checks: write
-    with:
-      dockerfile_context: connect-base/
-      dockerhub_repository_name: debezium-alpine-connect-base
     secrets: inherit
 
   connect-base-release:
-    needs: [github-release, base-release]
+    needs: [github-release, extract-version, base-release]
     if: ${{ needs.github-release.outputs.release_created == 'true' }}
     uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
     permissions:
@@ -85,32 +68,12 @@ jobs:
       dockerfile_context: connect-base/
       dockerhub_repository_name: debezium-alpine-connect-base
       tag: |
-        3.2.2.Final
+        ${{ needs.extract-version.outputs.debezium_version }}
         latest
     secrets: inherit
 
-  final-build:
-    needs: [github-release, connect-base-build]
-    strategy:
-      matrix:
-        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
-    if: ${{ needs.github-release.outputs.release_created == 'false' }}
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-      id-token: write
-      packages: write
-      pull-requests: write
-      checks: write
-    with:
-      dockerfile_context: ${{ matrix.plugin }}/
-      dockerhub_repository_name: debezium-${{ matrix.plugin }}
-    secrets: inherit
-
   final-release:
-    needs: [github-release, connect-base-release]
+    needs: [github-release, extract-version, connect-base-release]
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
@@ -128,6 +91,6 @@ jobs:
       dockerfile_context: ${{ matrix.plugin }}/
       dockerhub_repository_name: debezium-${{ matrix.plugin }}
       tag: |
-        3.2.2.Final
+        ${{ needs.extract-version.outputs.debezium_version }}
         latest
     secrets: inherit
