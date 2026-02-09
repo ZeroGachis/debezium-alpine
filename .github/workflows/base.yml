@@ -5,11 +5,6 @@ on:
   pull_request:
     paths:
       - "base/**"
-  push:
-    branches:
-      - main
-    paths:
-      - "base/**"
 
 jobs:
   pr-build:
@@ -31,19 +26,3 @@ jobs:
       regitry_url: ghcr.io
       security_scan_output_format: sarif
       trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
-
-  build:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-      id-token: write
-      packages: write
-      pull-requests: write
-      checks: write
-    with:
-      dockerfile_context: base/
-      dockerhub_repository_name: debezium-alpine-base
-    secrets: inherit
