@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.8.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.7.0...v3.8.0) (2026-02-11)
+
+
+### Features
+
+* upgrade connect-base to debezium-alpine-base 3.2.6.Final ([798ec23](https://github.com/ZeroGachis/debezium-alpine/commit/798ec23e37254b1b79ad72b052e6ce205b680d44))
+* upgrade connector images to connect-base 3.2.6.Final ([e756a3b](https://github.com/ZeroGachis/debezium-alpine/commit/e756a3bc75de4f471b1846aacf2a8e223bbce26d))
+* upgrade Debezium version to 3.2.6.Final ([49996d6](https://github.com/ZeroGachis/debezium-alpine/commit/49996d6f2eae38d31837ef243c64eaabd44ada67))
+
+
+### Bug Fixes
+
+* ensure connector images run as non-root kafka user ([9dfb020](https://github.com/ZeroGachis/debezium-alpine/commit/9dfb020cc8c6b510ce90453a3d93462c0050243b))
+
 ## [3.7.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.3...v3.7.0) (2026-02-11)
 
 
