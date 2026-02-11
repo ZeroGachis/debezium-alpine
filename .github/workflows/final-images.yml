@@ -8,6 +8,13 @@ on:
       - "snowflake-slim/**"
       - "mariadb-slim/**"
       - "jdbc-slim/**"
+  push:
+    branches: [main]
+    paths:
+      - "postgresql-slim/**"
+      - "snowflake-slim/**"
+      - "mariadb-slim/**"
+      - "jdbc-slim/**"
 
 jobs:
   pr-build:
@@ -32,3 +39,46 @@ jobs:
       regitry_url: ghcr.io
       security_scan_output_format: sarif
       trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
+
+  extract-versions:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.get-versions.outputs.versions }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version from each plugin Dockerfile
+        id: get-versions
+        run: |
+          VERSIONS='{}'
+          for plugin in postgresql-slim snowflake-slim mariadb-slim jdbc-slim; do
+            VERSION=$(grep '^FROM' "$plugin/Dockerfile" | head -1 | sed 's/.*://')
+            VERSIONS=$(echo "$VERSIONS" | jq --arg k "$plugin" --arg v "$VERSION" '. + {($k): $v}')
+            echo "Detected version for $plugin: $VERSION"
+          done
+          echo "versions=$(echo $VERSIONS | jq -c .)" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: extract-versions
+    if: github.event_name == 'push'
+    strategy:
+      matrix:
+        plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
+    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      id-token: write
+      packages: write
+      pull-requests: write
+      checks: write
+    with:
+      dockerfile_context: ${{ matrix.plugin }}/
+      dockerhub_repository_name: debezium-${{ matrix.plugin }}
+      tag: |
+        ${{ fromJSON(needs.extract-versions.outputs.versions)[matrix.plugin] }}
+        latest
+    secrets: inherit

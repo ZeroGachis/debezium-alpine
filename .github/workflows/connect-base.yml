@@ -5,6 +5,10 @@ on:
   pull_request:
     paths:
       - "connect-base/**"
+  push:
+    branches: [main]
+    paths:
+      - "connect-base/**"
 
 jobs:
   pr-build:
@@ -31,9 +35,50 @@ jobs:
       security_scan_output_format: sarif
       trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
 
-  pr-build-full:
-    if: github.event_name == 'pull_request'
-    uses: ZeroGachis/.github/.github/workflows/build-image.yml@v5
+  # pr-build-full:
+  #   if: github.event_name == 'pull_request'
+  #   uses: ZeroGachis/.github/.github/workflows/build-image.yml@v5
+  #   permissions:
+  #     contents: read
+  #     security-events: write
+  #     actions: read
+  #     id-token: write
+  #     packages: write
+  #     pull-requests: write
+  #     checks: write
+  #   with:
+  #     image_name: debezium-alpine-connect-base-full
+  #     build-args: |
+  #       ARG OTEL_ENABLED=yes
+  #       ARG APICURIO_ENABLED=yes
+  #       ARG JOLOKIA_ENABLED=yes
+  #     dockerfile_context: connect-base/
+  #     vault_enabled: false
+  #     tailscale_enabled: false
+  #     regitry_url: ghcr.io
+  #     security_scan_output_format: sarif
+  #     trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
+
+  extract-version:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      debezium_version: ${{ steps.get-version.outputs.debezium_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract Debezium version from Dockerfile
+        id: get-version
+        run: |
+          VERSION=$(grep '^FROM' connect-base/Dockerfile | head -1 | sed 's/.*://')
+          echo "debezium_version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Detected Debezium version: ${VERSION}"
+
+  release:
+    needs: extract-version
+    if: github.event_name == 'push'
+    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
     permissions:
       contents: read
       security-events: write
@@ -43,14 +88,9 @@ jobs:
       pull-requests: write
       checks: write
     with:
-      image_name: debezium-alpine-connect-base-full
-      build-args: |
-        ARG OTEL_ENABLED=yes
-        ARG APICURIO_ENABLED=yes
-        ARG JOLOKIA_ENABLED=yes
       dockerfile_context: connect-base/
-      vault_enabled: false
-      tailscale_enabled: false
-      regitry_url: ghcr.io
-      security_scan_output_format: sarif
-      trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
+      dockerhub_repository_name: debezium-alpine-connect-base
+      tag: |
+        ${{ needs.extract-version.outputs.debezium_version }}
+        latest
+    secrets: inherit
