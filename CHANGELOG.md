@@ -1,5 +1,34 @@
 # Changelog
 
+## [3.7.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.3...v3.7.0) (2026-02-11)
+
+
+### Features
+
+* centralize DEBEZIUM_VERSION in base Dockerfile ([860c9a0](https://github.com/ZeroGachis/debezium-alpine/commit/860c9a07356a4df2565cdc41e811495a9c44b89b))
+* upgrade alpine base version to 3.23 ([446601e](https://github.com/ZeroGachis/debezium-alpine/commit/446601e770c4b8c96fda0ad29e790665a5d1eb87))
+
+
+### Bug Fixes
+
+* removed useless build-push workflow ([a67ca39](https://github.com/ZeroGachis/debezium-alpine/commit/a67ca399b01daa9c68fe425b6ef1d2dbffa9fd32))
+
+
+### Documentation
+
+* improve README with architecture, usage and upgrade guide ([797fa30](https://github.com/ZeroGachis/debezium-alpine/commit/797fa3082986901b88b772ef0cde334054847b12))
+
+
+### Miscellaneous Chores
+
+* upgrade packages versions ([5bd1dc5](https://github.com/ZeroGachis/debezium-alpine/commit/5bd1dc53257e975aa204ca2800b0c757f4aaf6b2))
+
+
+### Continuous Integration
+
+* add per-image release on push to main ([fa08e7f](https://github.com/ZeroGachis/debezium-alpine/commit/fa08e7f9898d6709b5957d1262dda20d53fe269e))
+* improved the workflows to handle distinctively the build of our images ([31a7f05](https://github.com/ZeroGachis/debezium-alpine/commit/31a7f0566404c68df290de5f541df8b2ee6d9b94))
+
 ## [3.6.3](https://github.com/ZeroGachis/debezium-alpine/compare/v3.6.2...v3.6.3) (2026-02-09)
 
 
