@@ -5,6 +5,10 @@ on:
   pull_request:
     paths:
       - "base/**"
+  push:
+    branches: [main]
+    paths:
+      - "base/**"
 
 jobs:
   pr-build:
@@ -26,3 +30,39 @@ jobs:
       regitry_url: ghcr.io
       security_scan_output_format: sarif
       trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
+
+  extract-version:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      debezium_version: ${{ steps.get-version.outputs.debezium_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract Debezium version from Dockerfile
+        id: get-version
+        run: |
+          VERSION=$(grep '^ENV DEBEZIUM_VERSION=' base/Dockerfile | sed 's/.*=//')
+          echo "debezium_version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Detected Debezium version: ${VERSION}"
+
+  release:
+    needs: extract-version
+    if: github.event_name == 'push'
+    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      id-token: write
+      packages: write
+      pull-requests: write
+      checks: write
+    with:
+      dockerfile_context: base/
+      dockerhub_repository_name: debezium-alpine-base
+      tag: |
+        ${{ needs.extract-version.outputs.debezium_version }}
+        latest
+    secrets: inherit
