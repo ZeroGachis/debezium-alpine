@@ -7,3 +7,5 @@ ENV MAVEN_REPO_CENTRAL="" \
     POSTGRES_MD5=807bc2af83a3d44bde4a6577ec48c5b8
 
 RUN docker-maven-download debezium postgres "$DEBEZIUM_VERSION" "$POSTGRES_MD5"
+
+USER kafka
