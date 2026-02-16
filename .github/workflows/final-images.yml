@@ -47,7 +47,7 @@ jobs:
       versions: ${{ steps.get-versions.outputs.versions }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Extract version from each plugin Dockerfile
         id: get-versions
