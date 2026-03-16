@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
-    uses: ZeroGachis/.github/.github/workflows/build-image.yml@v5
+    uses: ZeroGachis/.github/.github/workflows/build-image.yml@v6
     permissions:
       contents: read
       security-events: write
@@ -66,7 +66,7 @@ jobs:
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
-    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v5
+    uses: ZeroGachis/.github/.github/workflows/build-push-image-to-dockerhub.yml@v6
     permissions:
       contents: read
       security-events: write
