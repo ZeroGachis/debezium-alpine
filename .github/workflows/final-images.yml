@@ -41,7 +41,7 @@ jobs:
       trivy_severity: "CRITICAL,HIGH,MEDIUM,LOW"
 
   extract-versions:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     outputs:
       versions: ${{ steps.get-versions.outputs.versions }}
@@ -62,7 +62,7 @@ jobs:
 
   release:
     needs: extract-versions
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     strategy:
       matrix:
         plugin: [postgresql-slim, snowflake-slim, mariadb-slim, jdbc-slim]
