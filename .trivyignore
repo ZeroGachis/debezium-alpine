@@ -1,0 +1,4 @@
+# zlib - CVE-2026-22184
+# No fix available upstream yet, re-evaluate when Alpine ships a patched package
+# https://avd.aquasec.com/nvd/2026/cve-2026-22184/
+CVE-2026-22184 exp:2026-04-15

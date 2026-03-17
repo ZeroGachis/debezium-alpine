@@ -94,3 +94,68 @@ jobs:
         ${{ needs.extract-version.outputs.debezium_version }}
         latest
     secrets: inherit
+
+  trivy-scan:
+    needs: [extract-version, release]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Manual Trivy Setup
+        uses: aquasecurity/setup-trivy@v0.2.5
+        with:
+          version: v0.69.2
+          cache: true
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.34.1
+        with:
+          version: v0.69.2
+          skip-setup-trivy: true
+          image-ref: ${{ vars.DOCKERHUB_USERNAME }}/debezium-alpine-connect-base:${{ needs.extract-version.outputs.debezium_version }}
+          format: "sarif"
+          output: "trivy-results-debezium-alpine-connect-base.sarif"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH,MEDIUM,LOW"
+          trivyignores: ".trivyignore"
+        env:
+          TRIVY_DISABLE_VEX_NOTICE: true
+
+      - name: Edit Trivy Sarif result
+        run: |
+          jq ".runs[0].tool.driver.name = \"Trivy-image-debezium-alpine-connect-base\"" ./trivy-results-debezium-alpine-connect-base.sarif > ./trivy-results-debezium-alpine-connect-base-edited.sarif
+
+      - name: Upload Trivy Sarif result
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: "trivy-results-debezium-alpine-connect-base-edited.sarif"
+          category: Trivy-docker-debezium-alpine-connect-base
+
+      - name: Trivy vulnerability block Critical
+        uses: aquasecurity/trivy-action@0.34.1
+        with:
+          version: v0.69.2
+          skip-setup-trivy: true
+          image-ref: ${{ vars.DOCKERHUB_USERNAME }}/debezium-alpine-connect-base:${{ needs.extract-version.outputs.debezium_version }}
+          format: "json"
+          exit-code: 1
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL"
+          trivyignores: ".trivyignore"
+        env:
+          TRIVY_DISABLE_VEX_NOTICE: true
