@@ -1,5 +1,28 @@
 # Changelog
 
+## [3.9.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.8.0...v3.9.0) (2026-03-17)
+
+
+### Features
+
+* enable manual trigger for 'build base image' CI workflow ([#105](https://github.com/ZeroGachis/debezium-alpine/issues/105)) ([57f62f8](https://github.com/ZeroGachis/debezium-alpine/commit/57f62f819b0c0559916fb82392cbe2cf13c9fec0))
+* enable manual trigger for 'build image' CI workflows ([#106](https://github.com/ZeroGachis/debezium-alpine/issues/106)) ([46b2ef4](https://github.com/ZeroGachis/debezium-alpine/commit/46b2ef4a55e233837f057dea097b35c62a3067d5))
+
+
+### Bug Fixes
+
+* **ci:** add secrets inherit to release-please workflow ([0523653](https://github.com/ZeroGachis/debezium-alpine/commit/0523653f06cf2d8d5a6383da220380360cabd358))
+
+
+### Miscellaneous Chores
+
+* upgrade CI workflows ([#104](https://github.com/ZeroGachis/debezium-alpine/issues/104)) ([52443f9](https://github.com/ZeroGachis/debezium-alpine/commit/52443f935bbb4323e4e8deaa05762bc41f23db0b))
+
+
+### Continuous Integration
+
+* re-enable trivy security scanning in release workflows ([928f524](https://github.com/ZeroGachis/debezium-alpine/commit/928f5249ca5706ae0d89a7cc99dd9e0796597c46))
+
 ## [3.8.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.7.0...v3.8.0) (2026-02-11)
 
 
