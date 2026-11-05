@@ -7,25 +7,25 @@ LABEL debezium.version=$DEBEZIUM_VERSION
 
 USER root
 
-# renovate: datasource=repology depName=alpine_3_22/gzip versioning=loose
-ENV GZIP_VERSION=1.14-r2
+# renovate: datasource=repology depName=alpine_3_23/gzip versioning=loose
+ENV GZIP_VERSION=1.14-r3
 
-# renovate: datasource=repology depName=alpine_3_22/curl versioning=loose
-ENV CURL_VERSION=8.17.0-r1
+# renovate: datasource=repology depName=alpine_3_23/curl versioning=loose
+ENV CURL_VERSION=8.23.0-r0
 
-# renovate: datasource=repology depName=alpine_3_22/zip versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/zip versioning=loose
 ENV ZIP_VERSION=3.0-r13
 
-# renovate: datasource=repology depName=alpine_3_22/openjdk21-jre-headless versioning=loose
-ENV OPENJDK_VERSION=21.0.10_p7-r0
+# renovate: datasource=repology depName=alpine_3_23/openjdk21-jre-headless versioning=loose
+ENV OPENJDK_VERSION=21.0.13.0.3_p1-r0
 
-# renovate: datasource=repology depName=alpine_3_22/bash versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/bash versioning=loose
 ENV BASH_VERSION=5.3.3-r1
 
-# renovate: datasource=repology depName=alpine_3_22/libaio versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/libaio versioning=loose
 ENV LIBAIO_VERSION=0.3.113-r2
 
-# renovate: datasource=repology depName=alpine_3_22/libaio versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/findutils versioning=loose
 ENV FINDUTILS_VERSION=4.10.0-r0
 
 
