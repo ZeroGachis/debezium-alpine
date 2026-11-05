@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.10.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.9.0...v3.10.0) (2026-11-05)
+
+
+### Features
+
+* upgrade connect-base to debezium-alpine-base 3.4.3.Final ([8980951](https://github.com/ZeroGachis/debezium-alpine/commit/89809519a83b57b1797e7ecef1d2d6f5d85704df))
+* upgrade connect-base to debezium-alpine-base 3.4.3.Final (2/3) ([ac2554d](https://github.com/ZeroGachis/debezium-alpine/commit/ac2554d91e5e91ce08a37739ef3bf1a693417738))
+* upgrade connector images to connect-base 3.4.3.Final ([fb6ec55](https://github.com/ZeroGachis/debezium-alpine/commit/fb6ec55e860fde9c664d713675bfee5b4a5185cb))
+* upgrade connector images to connect-base 3.4.3.Final (3/3) ([03aad05](https://github.com/ZeroGachis/debezium-alpine/commit/03aad0569fc090f8036ea076ed0d99cc346d7e54))
+* upgrade Debezium version to 3.4.3.Final (1/3) ([109e74f](https://github.com/ZeroGachis/debezium-alpine/commit/109e74f08fedbc2e4b60cb3d5164fc76407cd868))
+* upgrade Debezium version to 3.4.3.Final and Kafka to 4.1.1 ([620f546](https://github.com/ZeroGachis/debezium-alpine/commit/620f54668e092c3b9b407c4c2c53435c0798abee))
+
+
+### Bug Fixes
+
+* bump Alpine 3.23 package pins and point renovate to alpine_3_23 ([9278298](https://github.com/ZeroGachis/debezium-alpine/commit/92782987e63a1ebe1870c43d317432811012c840))
+* use Kafka 4.1.2 so the download is served by the Apache CDN ([a59b6b9](https://github.com/ZeroGachis/debezium-alpine/commit/a59b6b97bf35ab1a555997f052d05c184803b210))
+
 ## [3.9.0](https://github.com/ZeroGachis/debezium-alpine/compare/v3.8.0...v3.9.0) (2026-03-17)
 
 
