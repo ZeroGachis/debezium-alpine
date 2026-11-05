@@ -1,42 +1,42 @@
 FROM library/alpine:3.23@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659
 
-ENV DEBEZIUM_VERSION=3.2.6.Final
+ENV DEBEZIUM_VERSION=3.4.3.Final
 
 LABEL maintainer="Smartway"
 LABEL debezium.version=$DEBEZIUM_VERSION
 
 USER root
 
-# renovate: datasource=repology depName=alpine_3_22/gzip versioning=loose
-ENV GZIP_VERSION=1.14-r2
+# renovate: datasource=repology depName=alpine_3_23/gzip versioning=loose
+ENV GZIP_VERSION=1.14-r3
 
-# renovate: datasource=repology depName=alpine_3_22/curl versioning=loose
-ENV CURL_VERSION=8.17.0-r1
+# renovate: datasource=repology depName=alpine_3_23/curl versioning=loose
+ENV CURL_VERSION=8.23.0-r0
 
-# renovate: datasource=repology depName=alpine_3_22/zip versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/zip versioning=loose
 ENV ZIP_VERSION=3.0-r13
 
-# renovate: datasource=repology depName=alpine_3_22/openjdk21-jre-headless versioning=loose
-ENV OPENJDK_VERSION=21.0.10_p7-r0
+# renovate: datasource=repology depName=alpine_3_23/openjdk21-jre-headless versioning=loose
+ENV OPENJDK_VERSION=21.0.13.0.3_p1-r0
 
-# renovate: datasource=repology depName=alpine_3_22/bash versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/bash versioning=loose
 ENV BASH_VERSION=5.3.3-r1
 
-# renovate: datasource=repology depName=alpine_3_22/libaio versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/libaio versioning=loose
 ENV LIBAIO_VERSION=0.3.113-r2
 
-# renovate: datasource=repology depName=alpine_3_22/libaio versioning=loose
+# renovate: datasource=repology depName=alpine_3_23/findutils versioning=loose
 ENV FINDUTILS_VERSION=4.10.0-r0
 
 
 RUN apk add --no-cache --update openjdk21-jre-headless=${OPENJDK_VERSION} gzip=${GZIP_VERSION} curl=${CURL_VERSION} zip=${ZIP_VERSION} bash=${BASH_VERSION} libaio=${LIBAIO_VERSION} findutils=${FINDUTILS_VERSION}
 
 # TODO: add renovate here
-ARG KAFKA_VERSION=4.1.0
+ARG KAFKA_VERSION=4.1.2
 
 # TODO: add renovate here
 ARG SCALA_VERSION=2.13
-ARG SHA512HASH="2F611FA1117747A3567AB5D8E59C24A3DC5CD3C0D50A67CF718AB5203BD5CA69D9A1E2C705EE07B8363D71DE48964BFD65FAC31100A91B458FBD6A2EB3C8EDE5"
+ARG SHA512HASH="78AC6E488B1071122F9608DFDB363F6FE50E1DBBC492347002C0398DFBF77E0D8CAA5BF794C5937379721004DFE92025937D238B0FAF4EB715529417FD43B491"
 
 ENV KAFKA_VERSION=$KAFKA_VERSION \
     SCALA_VERSION=$SCALA_VERSION \
